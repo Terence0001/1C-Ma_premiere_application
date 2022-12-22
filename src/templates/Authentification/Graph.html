@@ -1,0 +1,49 @@
+{% if user.is_authenticated %}
+<h2>Page du Graphique</h2>
+<div>{% csrf_token %}
+    <button type="submit" class="btn btn-outline-dark"><a href="/Logout">Se Déconnecter</a></button>
+    <button type="submit" class="btn btn-outline-dark"><a href=" {% url 'Home' %}">Retour à la page d'Importation</a></button>
+</div>
+    <div id="Graphique">
+        <div>
+            <canvas id="myChart" width="500" height="150"></canvas>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script>
+            const labels = [
+              'Janvier',
+              'Février',
+              'Mars',
+              'Avril',
+              'Mai',
+              'Juin',
+              'Juillet',
+              'Août',
+              'Septembre',
+              'Octobre',
+              'Novembre',
+              'Décembre',
+            ];
+          
+            const data = {
+              labels: labels,
+              datasets: [{
+                label: 'My First dataset',
+                backgroundColor: 'rgb(255, 99, 132)',
+                borderColor: 'rgb(255, 99, 132)',
+                data: [0, 10, 50, 12, 20, 30, 45, 55, 64, 98, 82, 24],
+              }]
+            };
+          
+            const config = {
+              type: 'line',
+              data: data,
+              options: {}
+            };
+            const myChart = new Chart(
+            document.getElementById('myChart'),
+            config
+            );
+          </script>
+    </div>
+{% endif %}

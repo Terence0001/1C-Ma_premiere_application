@@ -1,0 +1,26 @@
+{% extends 'Base.html' %}
+
+{%block Page_auth%}
+{% for message in messages %}
+{{message}}
+{% endfor %}
+
+<div class="container-fluid shadow-lg p-3 mb-5 bg-body rounded">
+    <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+        <div class="card-header"></div>
+        <div class="card-body">
+            <form method="POST" action="/Login">
+                {% csrf_token %}
+                    <label for"Username">Nom d'utilisateur(trice)</label>
+                    <input type="text" name="Username" id="Username" placeholder="Entrer votre nom d'utilisateur(trice)" required>
+                <br></br>
+                    <label for"Mot_de_passe">Mot de passe</label>
+                    <input type="password" name="Mot_de_passe" id="Mot_de_passe" placeholder="Entrer votre Mot de passe" required>
+                <br></br>
+                    <button type="submit" class="btn btn-outline-dark">Connexion</button>
+                </form>       
+                </center>
+            {% endblock %}
+        </div>
+      </div>
+</div>
